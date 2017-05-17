@@ -1,0 +1,74 @@
+/*Check vowel or consonant*/
+#include <stdlib.h>	
+#include <stdio.h>
+#include <ctype.h>
+int main(void)
+{
+	char C;
+	int isLowerCaseVowel, isUpperCaseVowel, runcounter = 0;
+
+	do 
+	{
+		printf("Enter a letter: \n");
+		C = getchar();
+		if (runcounter > 0)
+		{
+			if (!isalpha(C))
+				printf("Enter a letter: \n");
+		}
+		++runcounter;
+	} while (!isalpha(C));
+
+	isLowerCaseVowel = (C == 'a' || C == 'e' || C == 'i' || C == 'o' || C == 'u');
+
+	isUpperCaseVowel = (C == 'A' || C == 'E' || C == 'I' || C == 'O' || C == 'U');
+
+
+	if (isLowerCaseVowel || isUpperCaseVowel)
+	{
+		printf("%c is a vowel.\n", C);
+	}
+	else
+		printf("%c is a consonant.\n", C);
+
+	system("pause");
+	return 0;
+}
+
+/*Check vowel or consonant*/
+#include <stdlib.h>	
+#include <stdio.h>
+#include <ctype.h>
+
+int checkPrimeNumber();
+
+int main(void) 
+{
+	int x;
+
+	x = checkPrimeNumber();
+	printf("%d\n", x);
+	system("pause");
+	}
+
+int checkPrimeNumber()
+{
+	int num, i, flag = 0;
+	printf("Enter a positive integer: \n");
+	scanf_s("%d", &num);
+
+	for (i = 2; i <= num; i++)
+	{
+		if (num%i == 0)
+		{
+			flag = 1;
+		}
+	}
+	if (flag == 1)
+		printf("%d is not a prime number. \n", num);
+	else
+		printf("%d is a prime number. \n", num);
+	
+	return num;
+	
+}
