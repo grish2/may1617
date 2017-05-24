@@ -248,3 +248,51 @@ void checkForWinner()
 		return;
 	}//end if
 }
+
+#include <stdlib.h>
+#include <stdio.h>
+#define pause system("pause");
+
+int main(void)
+{
+	int top = 0, bottom = 0, middle = 0, search = 0, location = 0;
+	int myArray[11] = { 1, 4, 6, 8, 90, 100, 333, 444, 555, 999, 1000 };
+	int count = 11;
+	char stop = 'N';
+
+	printf("There are our values: 1, 4, 6, 8, 90, 100, 333, 444, 555, 999, 1000\n");
+	printf("Enter a value to find:\n");
+	scanf_s("%d", &search);
+	bottom = count - 1;
+	middle = (top + bottom) / 2;
+
+	while (top <= bottom && stop == 'N')
+	{
+		if (myArray[middle] < search) 
+		{
+			
+			top = middle + 1;
+			middle = (top + bottom) / 2;
+		}
+		else if (myArray[middle] == search)
+		{
+			location = middle + 1;
+			stop = 'Y';
+		}
+		else
+		{
+			bottom = middle - 1;
+			middle = (top + bottom) / 2;
+		}
+	}
+	if (top > bottom)
+	{
+		printf("Not found! %i is not present in the list.\n", search);
+	}
+	else
+	{
+		printf("Value %i is element %i index number %i.\n", search, location, middle);
+	}
+	pause;
+	return 0;
+}
