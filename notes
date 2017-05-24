@@ -296,3 +296,55 @@ int main(void)
 	pause;
 	return 0;
 }
+
+#include <stdlib.h>
+#include <stdio.h>
+#define pause system("pause");
+#define MAXELEMENTS 10
+//Prototype function
+void displayArray(int a[], char m[50]);
+void doTheSwitch(int array[], int i, char *switchMade);
+
+int main(void)
+{
+	int array[MAXELEMENTS] = { 54, 3, 1, 4, 32, 8, 9, 11, 23, 99 };
+	int i, bottom, temp;
+	char switchMade;
+
+	bottom = MAXELEMENTS - 1;
+	displayArray(array, "UNSORTED LIST");
+
+	do {
+		switchMade = 'N';
+		for (i = 0; i < bottom; i++)
+		{
+			if (array[i] < array[i + 1])
+			{
+				doTheSwitch(array, i, &switchMade);
+			}
+		}//end for loop
+		bottom--;
+	} while (switchMade == 'Y');
+	displayArray(array, "Sorted List");
+	pause;
+	return 0;
+}
+
+void displayArray(int a[], char m[50])
+{
+	int i;
+	printf("%s: \n", m);
+	for (i = 0; i < MAXELEMENTS; i++)
+	{
+		printf("Element %2i = %2i.\n", i + 1, a[i]);
+	}
+	printf("\n");
+}//end of displayArray
+void doTheSwitch(int array[], int i, char *switchMade)
+{
+	int temp;
+	temp = array[i];
+	array[i] = array[i + 1];
+	array[i + 1] = temp;
+	*switchMade = 'Y';
+}//end function doTheSwitch
